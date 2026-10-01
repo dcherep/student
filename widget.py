@@ -12,6 +12,7 @@ class Widget(QWidget):
         self.ui.setupUi(self)
         create()
         self.ui.pushButton.clicked.connect(self.addStudent)
+        self.ui.pushButton_2.clicked.connect(self.close)
 
     def addStudent(self):
         self.surname =self.ui.lineEdit.text()
@@ -27,7 +28,7 @@ class Widget(QWidget):
                 msg.setText('Студент успешно добавлен')
                 msg.exec()
         except Exception as e:
-            msg.setText(f'{str(e)}')
+            msg.setText(f'Ошибка: {str(e)}')
             msg.exec()
 
 
