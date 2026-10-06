@@ -3,7 +3,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QWidget,QMessageBox
 from ui_form import Ui_Widget
 from sqlalchemy.orm import Session
-from student import Student, engine, create
+from student import Student, engine, create, Group
 
 class Widget(QWidget):
     def __init__(self, parent=None):
@@ -11,6 +11,7 @@ class Widget(QWidget):
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
         create()
+        self.load_groups()
         self.ui.pushButton.clicked.connect(self.addStudent)
         self.ui.pushButton_2.clicked.connect(self.close)
 
@@ -18,7 +19,7 @@ class Widget(QWidget):
         self.surname =self.ui.lineEdit.text()
         self.name =self.ui.lineEdit_2.text()
         self.patr =self.ui.lineEdit_3.text()
-        self.group =int(self.ui.lineEdit_4.text())
+        self.group =int(self.ui.comboBox.currentData())
         msg = QMessageBox(self)
         try:
             with Session(autoflush=False,bind=engine) as db:
@@ -30,6 +31,12 @@ class Widget(QWidget):
         except Exception as e:
             msg.setText(f'Ошибка: {str(e)}')
             msg.exec()
+
+    def load_groups(self):
+        with Session(engine) as db:
+            groups = db.query(Group).all()
+            for group in groups:
+                self.ui.comboBox.addItem(group.title,group.id)
 
 
 if __name__ == "__main__":

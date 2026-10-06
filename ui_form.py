@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
-    QSizePolicy, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -71,10 +71,9 @@ class Ui_Widget(object):
         self.lineEdit_3.setObjectName(u"lineEdit_3")
         self.lineEdit_3.setGeometry(QRect(340, 250, 113, 22))
         self.lineEdit_3.setFont(font3)
-        self.lineEdit_4 = QLineEdit(Widget)
-        self.lineEdit_4.setObjectName(u"lineEdit_4")
-        self.lineEdit_4.setGeometry(QRect(340, 290, 113, 22))
-        self.lineEdit_4.setFont(font3)
+        self.comboBox = QComboBox(Widget)
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setGeometry(QRect(340, 290, 111, 24))
 
         self.retranslateUi(Widget)
 

@@ -184,19 +184,14 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
      <x>340</x>
      <y>290</y>
-     <width>113</width>
-     <height>22</height>
+     <width>111</width>
+     <height>24</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
    </property>
   </widget>
  </widget>
