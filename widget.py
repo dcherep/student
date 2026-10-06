@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QApplication, QWidget,QMessageBox
 from ui_form import Ui_Widget
 from sqlalchemy.orm import Session
 from student import Student, engine, create, Group
+from add_student import AddStudent
 
 class Widget(QWidget):
     def __init__(self, parent=None):
@@ -12,8 +13,14 @@ class Widget(QWidget):
         self.ui.setupUi(self)
         create()
         self.load_groups()
-        self.ui.pushButton.clicked.connect(self.addStudent)
+        self.window_add_student = None
+        self.ui.pushButton.clicked.connect(self.show_add)
         self.ui.pushButton_2.clicked.connect(self.close)
+
+    def show_add(self):
+        if self.window_add_student is None:
+            self.window_add_student = AddStudent()
+        self.window_add_student.show()
 
     def addStudent(self):
         self.surname =self.ui.lineEdit.text()
