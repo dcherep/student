@@ -8,6 +8,7 @@ class Group(Base):
     __tablename__="groups"
     id = Column(Integer, primary_key=True, index=True)
     title= Column(String, nullable=False)
+    students = relationship("Student", back_populates="group", lazy="joined")
 
 class Student(Base):
     __tablename__="students"
@@ -15,7 +16,10 @@ class Student(Base):
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
     patr = Column(String)
+    gender=Column(String)
+    logo=Column(String)
     group_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
+    group=relationship("Group", back_populates="students",lazy="joined")
 
 def create():
     Base.metadata.create_all(bind=engine)
