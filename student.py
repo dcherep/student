@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Session, relationship
 
 engine = create_engine("postgresql://admin:12345@217.71.129.139:6075/my_database")
+
 class Base(DeclarativeBase): pass
 class Group(Base):
     __tablename__="groups"
@@ -20,6 +21,23 @@ class Student(Base):
     logo=Column(String)
     group_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
     group=relationship("Group", back_populates="students",lazy="joined")
+
+class Role(Base):
+    __tablename__="roles"
+    id = Column(Integer, primary_key=True, index=True)
+    title= Column(String, nullable=False)
+    users = relationship("User", back_populates="role", lazy="joined")
+
+class User(Base):
+    __tablename__="users"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    surname = Column(String, nullable=False)
+    patr = Column(String)
+    loginr=Column(String, nullable=False)
+    password=Column(String, nullable=False)
+    role_id = Column(Integer, ForeignKey("roles.id"), nullable=False)
+    role=relationship("Role", back_populates="users",lazy="joined")
 
 def create():
     Base.metadata.create_all(bind=engine)
