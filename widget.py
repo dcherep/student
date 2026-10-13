@@ -8,6 +8,7 @@ from add_student import AddStudent
 from show_student import ShowStudent
 from login import Login
 
+
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -22,10 +23,20 @@ class Widget(QWidget):
         #self.load_students()
 
         self.window_add_student = None
+        self.window_edit_student = None
         self.ui.pushButton.clicked.connect(self.show_add)
-        self.ui.pushButton_2.clicked.connect(self.close)
+        self.ui.pushButton_2.clicked.connect(self.exit)
         self.ui.comboBox.currentIndexChanged.connect(self.group_changed)
         self.ui.lineEdit.textChanged.connect(self.surname_changed)
+
+
+    def exit(self):
+        self.user=None
+        self.hide()
+        login_window.ui.lineEdit.setText('')
+        login_window.ui.lineEdit_2.setText('')
+        login_window.show()
+
 
     def surname_changed(self):
         if len(self.ui.lineEdit.text())>0:
@@ -64,6 +75,7 @@ class Widget(QWidget):
             self.window_add_student = AddStudent()
         self.window_add_student.show()
 
+
     def load_groups(self):
         with Session(engine) as db:
             groups = db.query(Group).all()
@@ -76,8 +88,11 @@ class Widget(QWidget):
         if self.user.role.id ==1:
             pass
         elif self.user.role.id ==2:
-            pass
+            self.ui.pushButton.hide()
         else:
+            self.ui.groupBox.hide()
+            self.ui.pushButton.hide()
+            self.ui.pushButton_2.hide()
             for i in range(self.ui.verticalLayout_2.count()):
                 item = self.ui.verticalLayout_2.itemAt(i)
                 widget = item.widget()

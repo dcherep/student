@@ -100,6 +100,6 @@ class Ui_Widget(object):
         self.label.setText(QCoreApplication.translate("Widget", u"\u0413\u0440\u0443\u043f\u043f\u0430", None))
         self.label_2.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u0438\u0441\u043a(\u043f\u043e \u0444\u0430\u043c\u0438\u043b\u0438\u0438)", None))
         self.pushButton.setText(QCoreApplication.translate("Widget", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043a\u0440\u044b\u0442\u044c", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0439\u0442\u0438", None))
     # retranslateUi
 

@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>admin</string>
    </property>
    <property name="placeholderText">
     <string>Логин</string>
@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>12345</string>
    </property>
    <property name="placeholderText">
     <string>Пароль</string>

@@ -28,5 +28,6 @@ class Login(QWidget):
                 self.main_window.show()
                 self.main_window.user =user
                 self.main_window.check_role()
+                self.main_window.setWindowTitle(f'Пользователь: {user.surname} {user.name} {user.patr} ')
                 self.main_window.load_students()
                 self.close()

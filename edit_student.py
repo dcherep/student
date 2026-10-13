@@ -20,6 +20,7 @@ class EditStudent(QWidget):
         self.ui.pushButton.clicked.connect(self.save_student)
         self.ui.pushButton_2.clicked.connect(self.close)
 
+
     def save_student(self):
         new_surname =self.ui.lineEdit.text()
         new_name =self.ui.lineEdit_2.text()

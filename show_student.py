@@ -36,6 +36,9 @@ class ShowStudent(QWidget):
                                 self.ui.pushButton.hide()
                                 self.ui.pushButton_2.hide()
 
+
+
+
                 self.window_edit_student=None
                 self.ui.pushButton.clicked.connect(self.show_edit)
                 self.ui.pushButton_2.clicked.connect(self.delete_student)
